@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import api from '../../services/api'
 
 import Container from '../../components/Container'
-import { Loading, Owner, IssuesList } from './styles'
+import Owner from '../../components/Owner'
+import Loading from '../../components/Loading'
+
+import { IssuesList } from './styles'
 
 export default class extends Component {
 

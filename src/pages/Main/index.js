@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa'
+import { FaGithubAlt, FaPlus, FaSpinner, FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 import api from '../../services/api'
@@ -7,20 +7,21 @@ import api from '../../services/api'
 import Container from '../../components/Container'
 import { Form, SubmitButton, List } from './styles'
 
+const repositoriesStorage = localStorage.getItem('repositorios')
+
 export default class Main extends Component {
 
     state = {
         repositories: [],
         newRepo: '',
-        loading: false
+        loading: false,
+        backgroundColor: '#000'
     }
 
     // carregar dados do localstorage
     componentDidMount() {
-        const repositories = localStorage.getItem('repositorios')
-
-        if(repositories) {
-            this.setState({ repositories: JSON.parse(repositories)})
+        if(repositoriesStorage) {
+            this.setState({ repositories: JSON.parse(repositoriesStorage)})
         }
     }
 
@@ -32,6 +33,7 @@ export default class Main extends Component {
         if (prevState.repositories !== this.state.repositories) {
             localStorage.setItem('repositorios', JSON.stringify(repositories))
         }
+
     }
 
     handleInputChange = e => {
@@ -57,21 +59,40 @@ export default class Main extends Component {
         })
     }
 
+    handleDelete = e => {
+        e.preventDefault()
+
+        if(repositoriesStorage) {
+            localStorage.clear()
+            alert('Tudo limpo!!! ^u^')
+            window.location.reload()
+        }
+    }
+
     render() {
 
         const { newRepo, repositories, loading } = this.state
 
         return (
             <Container>
-                <h1>
-                    <FaGithubAlt />
-                    Repositórios
-                </h1>
+                <header>
+                    <h1>
+                        <FaGithubAlt />
+                        Repositórios
+                    </h1>
+
+                    <button styles={{backgroundColor: this.state.background}}
+                        onClick={this.handleDelete}
+                        disabled={!repositoriesStorage}>
+                            <FaTrashAlt />
+                            Apagar tudo
+                    </button>
+                </header>
 
                 <Form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
-                        placeholder="Adicionar repositório"
+                        placeholder="Adicionar repositório. Ex: allonsmandy/wordpress"
                         value={newRepo}
                         onChange={this.handleInputChange}
                     />
@@ -87,7 +108,12 @@ export default class Main extends Component {
                 <List>
                     { repositories.map (repository => (
                         <li key={repository.name}>
-                            <span>{repository.name}</span>
+                            <span>
+                                <Link
+                                    to={`/usuario/${encodeURIComponent(repository.name.split('/', 1))}`}>
+                                        {repository.name.split('/', 1)}
+                                    </Link>/{repository.name.split('/').slice(1, 2)}
+                            </span>
                             <Link to={`/repositorio/${encodeURIComponent(repository.name)}`}>Detalhes</Link>
                         </li>
                     ))}

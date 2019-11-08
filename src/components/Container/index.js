@@ -1,13 +1,19 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // *~ Container ~*
-const Container = styled.div`
+const Container = styled.div.attrs(props => ({
+    disabled: props.disabled
+}))`
     max-width: 700px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
     margin: 80px auto;
+
+    header {
+    display: flex;
+    justify-content: space-between;
 
     h1 {
         font-size: 20px;
@@ -19,6 +25,23 @@ const Container = styled.div`
     svg {
         margin-right: 10px;
     }
+
+    button {
+        border: none;
+        padding: 5px 10px;
+        transition: .1s ease-in-out;
+
+        /* background: ${props => (!props.disabled ? '#FF8686' : '#ccc')};
+        cursor: ${props => (!props.disabled ? 'not-allowed' : 'pointer' )};
+
+        ${props => props.disabled && css`
+            &:hover {
+                background: #8889;
+                color: white;
+            }
+        `} */
+    }
+}
 `
 
 export default Container

@@ -78,6 +78,12 @@ export const List = styled.ul`
         a {
             color: #715;
             text-decoration: none;
+            background: #eeeeba;
+            padding: 5px;
+
+            &:hover {
+                background: #eee;
+            }
         }
     }
 `
