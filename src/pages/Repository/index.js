@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import api from '../../services/api'
 
 import Container from '../../components/Container'
-import { Loading, Owner } from './styles'
+import { Loading, Owner, IssuesList } from './styles'
 
 export default class extends Component {
 
@@ -61,9 +61,29 @@ export default class extends Component {
                 <Owner>
                     <Link to="/">Voltar aos repositórios</Link>
                     <img src={repositorio.owner.avatar_url} alt={repositorio.owner.login}/>
-                    <h1>{repositorio.name}</h1>
+                    <h1>Repositório: {repositorio.name}</h1>
+                    <h4>{repositorio.owner.login}</h4>
                     <p>{repositorio.description}</p>
                 </Owner>
+
+                <IssuesList>
+                    {issues.map(issue => (
+                        <li key={String(issue.id)}>
+                            <img src={issue.user.avatar_url} alt={issue.user.login}/>
+                            <div>
+                                <strong>
+                                    <a href={issue.html_url}>{issue.title}</a>
+                                    {issue.labels.map(label => (
+                                        <span key={String(label.id)}>{label.name}</span>
+                                    ))}
+                                </strong>
+                                <p>
+                                    {issue.user.login}
+                                </p>
+                            </div>
+                        </li>
+                    ))}
+                </IssuesList>
             </Container>
         )
     }
