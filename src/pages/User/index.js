@@ -40,8 +40,7 @@ export default class User extends Component {
         return (
             <Container>
                 <Owner>
-                    <a href="/">Página Inicial</a>
-                    <Link to="/">Página iniciall</Link>
+                    <Link to="/">Página inicial</Link>
                     <h1>{user.name}</h1>
                     <img src={user.avatar_url} alt={user.login}/>
                     <p>{user.bio}</p>

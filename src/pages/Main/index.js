@@ -19,6 +19,8 @@ export default class Main extends Component {
 
     // *~ carregar dados do localstorage
     componentDidMount() {
+        const repositoriesStorage = localStorage.getItem('repositorios')
+
         if(repositoriesStorage) {
             this.setState({ repositories: JSON.parse(repositoriesStorage)})
         }

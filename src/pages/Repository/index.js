@@ -61,7 +61,6 @@ export default class extends Component {
         return (
             <Container>
                 <Owner>
-                    <a href="/">Página Inicial</a>
                     <Link to="/">Pagina inicial</Link>
                     <img src={repositorio.owner.avatar_url} alt={repositorio.owner.login}/>
                     <h1>Repositório: {repositorio.name}</h1>
