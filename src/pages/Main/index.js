@@ -7,8 +7,6 @@ import api from '../../services/api'
 import Container from '../../components/Container'
 import { Form, SubmitButton, List } from './styles'
 
-const repositoriesStorage = localStorage.getItem('repositorios')
-
 export default class Main extends Component {
 
     state = {
@@ -67,7 +65,9 @@ export default class Main extends Component {
     handleDelete = e => {
         e.preventDefault()
 
-        if(repositoriesStorage) {
+        const { repositories } = this.state
+
+        if(repositories) {
             localStorage.removeItem('repositorios')
             alert('Tudo limpo!!! ^u^')
             this.setState({ repositories: []})
