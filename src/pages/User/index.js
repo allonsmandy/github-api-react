@@ -15,7 +15,7 @@ export default class User extends Component {
 
     state = {
         user: [],
-        loading: true
+        loading: 1
     }
 
     async componentDidMount() {
@@ -40,7 +40,8 @@ export default class User extends Component {
         return (
             <Container>
                 <Owner>
-                    <Link to="/">Página inicial</Link>
+                    <a href="/">Página Inicial</a>
+                    <Link to="/">Página iniciall</Link>
                     <h1>{user.name}</h1>
                     <img src={user.avatar_url} alt={user.login}/>
                     <p>{user.bio}</p>

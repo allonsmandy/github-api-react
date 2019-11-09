@@ -21,7 +21,7 @@ export default class extends Component {
     state = {
         repositorio: {},
         issues: [],
-        loading: true
+        loading: 1
     }
 
     async componentDidMount() {
@@ -46,7 +46,7 @@ export default class extends Component {
         this.setState({
             repositorio: repositorio.data,
             issues: issues.data,
-            loading: false
+            loading: 0
         })
 
     }
@@ -55,12 +55,13 @@ export default class extends Component {
 
         const { repositorio, issues, loading } = this.state
 
-        if (loading) {
+        if (loading === 1) {
             return <Loading>Carregando... *u*</Loading>
         }
         return (
             <Container>
                 <Owner>
+                    <a href="/">Página Inicial</a>
                     <Link to="/">Pagina inicial</Link>
                     <img src={repositorio.owner.avatar_url} alt={repositorio.owner.login}/>
                     <h1>Repositório: {repositorio.name}</h1>

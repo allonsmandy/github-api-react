@@ -14,7 +14,7 @@ export default class Main extends Component {
     state = {
         repositories: [],
         newRepo: '',
-        loading: false,
+        loading: 0,
     }
 
     // *~ carregar dados do localstorage
@@ -44,7 +44,7 @@ export default class Main extends Component {
     handleSubmit = async e => {
         e.preventDefault()
 
-        this.setState({ loading: true })
+        this.setState({ loading: 1 })
 
         const { newRepo, repositories } = this.state
 
@@ -57,7 +57,7 @@ export default class Main extends Component {
         this.setState({
             repositories: [ ...repositories, data],
             newRepo: '',
-            loading: false
+            loading: 0
         })
     }
 
@@ -105,7 +105,7 @@ export default class Main extends Component {
                     />
 
                     <SubmitButton loading={loading}>
-                        { loading ?
+                        { loading === 1 ?
                             (<FaSpinner color="#fff" size={24} />) :
                             (<FaPlus color="#fff" size={24} />)
                         }
