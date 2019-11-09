@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import api from '../../services/api'
 
@@ -10,6 +10,9 @@ import Loading from '../../components/Loading'
 import { IssuesList } from './styles'
 
 export default class extends Component {
+    constructor(props) {
+        super(props)
+    }
 
     static propTypes = {
         match: PropTypes.shape({
@@ -62,7 +65,7 @@ export default class extends Component {
         return (
             <Container>
                 <Owner>
-                    <Link to="/">Voltar aos repositórios</Link>
+                    <Link to="/">Pagina inicial</Link>
                     <img src={repositorio.owner.avatar_url} alt={repositorio.owner.login}/>
                     <h1>Repositório: {repositorio.name}</h1>
                     <h4>{repositorio.owner.login}</h4>

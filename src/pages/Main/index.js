@@ -15,7 +15,6 @@ export default class Main extends Component {
         repositories: [],
         newRepo: '',
         loading: false,
-        backgroundColor: '#000'
     }
 
     // carregar dados do localstorage
@@ -46,6 +45,7 @@ export default class Main extends Component {
         this.setState({ loading: true })
 
         const { newRepo, repositories } = this.state
+
         const response = await api.get(`/repos/${newRepo}`)
 
         const data = {
@@ -63,9 +63,9 @@ export default class Main extends Component {
         e.preventDefault()
 
         if(repositoriesStorage) {
-            localStorage.clear()
+            localStorage.removeItem('repositorios')
             alert('Tudo limpo!!! ^u^')
-            window.location.reload()
+            this.setState({ repositories: []})
         }
     }
 
@@ -81,12 +81,16 @@ export default class Main extends Component {
                         Repositórios
                     </h1>
 
-                    <button styles={{backgroundColor: this.state.background}}
-                        onClick={this.handleDelete}
-                        disabled={!repositoriesStorage}>
-                            <FaTrashAlt />
-                            Apagar tudo
-                    </button>
+                    {!(repositories.length === 0) ?
+
+                        <button style={{backgroundColor: '#ff8686', cursor: 'pointer'}}
+                        onClick={this.handleDelete} >
+                            <FaTrashAlt /> Apagar tudo
+                        </button>
+
+                    : ''
+                    }
+
                 </header>
 
                 <Form onSubmit={this.handleSubmit}>

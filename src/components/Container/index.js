@@ -1,9 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // *~ Container ~*
-const Container = styled.div.attrs(props => ({
-    disabled: props.disabled
-}))`
+const Container = styled.div`
     max-width: 700px;
     background: #fff;
     border-radius: 4px;
@@ -30,18 +28,8 @@ const Container = styled.div.attrs(props => ({
         border: none;
         padding: 5px 10px;
         transition: .1s ease-in-out;
-
-        /* background: ${props => (!props.disabled ? '#FF8686' : '#ccc')};
-        cursor: ${props => (!props.disabled ? 'not-allowed' : 'pointer' )};
-
-        ${props => props.disabled && css`
-            &:hover {
-                background: #8889;
-                color: white;
-            }
-        `} */
-    }
-}
+        /* cursor: ${props => (!props.disabled ? 'not-allowed' : 'pointer' )}; */
+    }}
 `
 
 export default Container
