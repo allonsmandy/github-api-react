@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import api from '../../services/api'
 
@@ -10,10 +10,6 @@ import Loading from '../../components/Loading'
 import { IssuesList } from './styles'
 
 export default class extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     static propTypes = {
         match: PropTypes.shape({
             params: PropTypes.shape({

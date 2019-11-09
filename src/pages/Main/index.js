@@ -17,14 +17,14 @@ export default class Main extends Component {
         loading: false,
     }
 
-    // carregar dados do localstorage
+    // *~ carregar dados do localstorage
     componentDidMount() {
         if(repositoriesStorage) {
             this.setState({ repositories: JSON.parse(repositoriesStorage)})
         }
     }
 
-    // salvar dados do localstorage
+    // *~ salvar dados do localstorage
     componentDidUpdate(_, prevState) {
 
         const { repositories } = this.state
@@ -35,10 +35,12 @@ export default class Main extends Component {
 
     }
 
+    // *~ onChange input :3
     handleInputChange = e => {
         this.setState({ newRepo: e.target.value })
     }
 
+    // *~ adiciona repositório na lista
     handleSubmit = async e => {
         e.preventDefault()
 
@@ -59,6 +61,7 @@ export default class Main extends Component {
         })
     }
 
+    // *~ deleta a lista
     handleDelete = e => {
         e.preventDefault()
 
