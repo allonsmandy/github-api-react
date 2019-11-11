@@ -64,7 +64,7 @@ export default class extends Component {
                     <Link to="/">Pagina inicial</Link>
                     <img src={repositorio.owner.avatar_url} alt={repositorio.owner.login}/>
                     <h1>Repositório: {repositorio.name}</h1>
-                    <h4>{repositorio.owner.login}</h4>
+                    <Link to={`usuario/${encodeURIComponent(repositorio.owner.login)}`}>{repositorio.owner.login}</Link>
                     <p>{repositorio.description}</p>
                 </Owner>
 
