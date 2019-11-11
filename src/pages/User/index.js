@@ -8,6 +8,7 @@ import api from '../../services/api'
 import Container from '../../components/Container'
 import Owner from '../../components/Owner'
 import Loading from '../../components/Loading'
+import ValueBox from '../../components/ValueBox'
 
 import Info from './styles'
 
@@ -24,7 +25,7 @@ export default class User extends Component {
 
         const nome = await api.get(`/users/${usuarioNome}`)
 
-        this.setState({ user: nome.data, loading: false })
+        this.setState({ user: nome.data, loading: 0 })
 
         console.log(this.state.user)
     }
@@ -60,6 +61,24 @@ export default class User extends Component {
                             { user.location ? <strong>{user.location}</strong> : 'No Location'}
                         </li>
                     </Info>
+                    <section className="valueBox-list">
+                        <ValueBox bgColor="pink">
+                            <span>Seguidores: </span>
+                            <strong>{user.followers}</strong>
+                        </ValueBox>
+                        <ValueBox bgColor="blue">
+                            <span>Seguindo: </span>
+                            <strong>{user.following}</strong>
+                        </ValueBox>
+                        <ValueBox bgColor="#ccc">
+                            <span>Gists: </span>
+                            <strong>{user.public_gists}</strong>
+                        </ValueBox>
+                        <ValueBox bgColor="yellow">
+                            <span>Repositórios: </span>
+                            <strong>{user.public_repos}</strong>
+                        </ValueBox>
+                    </section>
                 </Owner>
             </Container>
         )

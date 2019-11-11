@@ -26,4 +26,10 @@ export default createGlobalStyle`
     button {
         cursor: pointer;
     }
+
+    .valueBox-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 `
