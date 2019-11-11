@@ -67,7 +67,7 @@ export default class User extends Component {
                             <strong>{user.followers}</strong>
                         </ValueBox>
                         <ValueBox bgColor="blue">
-                            <span>Seguindo: </span>
+                            <span><Link to={`/usuario/${encodeURIComponent(user.login)}/seguindo`}>Seguindo: </Link></span>
                             <strong>{user.following}</strong>
                         </ValueBox>
                         <ValueBox bgColor="#ccc">
