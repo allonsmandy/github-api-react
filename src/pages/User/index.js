@@ -63,7 +63,7 @@ export default class User extends Component {
                     </Info>
                     <section className="valueBox-list">
                         <ValueBox bgColor="pink">
-                            <span>Seguidores: </span>
+                            <span><Link to={`/usuario/${encodeURIComponent(user.login)}/seguidores`}>Seguidores: </Link></span>
                             <strong>{user.followers}</strong>
                         </ValueBox>
                         <ValueBox bgColor="blue">
