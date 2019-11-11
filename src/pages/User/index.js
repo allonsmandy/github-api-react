@@ -71,11 +71,11 @@ export default class User extends Component {
                             <strong>{user.following}</strong>
                         </ValueBox>
                         <ValueBox bgColor="#ccc">
-                            <span>Gists: </span>
+                        <span><Link to={`/usuario/${encodeURIComponent(user.login)}/gists`}>Gists: </Link></span>
                             <strong>{user.public_gists}</strong>
                         </ValueBox>
                         <ValueBox bgColor="yellow">
-                            <span>Repositórios: </span>
+                            <span><Link to={`/usuario/${encodeURIComponent(user.login)}/repositorios`}>Repositorios: </Link></span>
                             <strong>{user.public_repos}</strong>
                         </ValueBox>
                     </section>
