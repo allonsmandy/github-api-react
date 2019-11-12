@@ -1,8 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Container from '../../components/Container'
 
 import api from '../../services/api'
+
+import Gist from './styles'
 
 export default class Gists extends Component {
 
@@ -17,24 +19,39 @@ export default class Gists extends Component {
 
         const gists = await api.get(`/users/${nomeUsuario}/gists`)
 
-        this.setState({gists: gists.data, user: nomeUsuario})
+        this.setState({ gists: gists.data, user: nomeUsuario })
     }
 
     render() {
         const { gists, user } = this.state
+        console.log(gists)
 
         return (
             <Container>
                 <h1>Gists de <Link to={`/usuario/${encodeURIComponent(user)}`}>{user}</Link></h1>
-                    {gists.map(gist => (
-                        <li key={gist.id}>
-                                { Object.keys(gist.files).forEach((item) => (
-                                    // console.log(gist.files[item])
-                                    <a>{gist.files[item]}</a>
-                    ))}
-                    {console.log(gist.files)}
-                        </li>
-                    ))}
+                {
+                    gists.length >= 1 ? (
+                        <Gist>
+                            {gists.map(gist => (
+                                <li key={gist.id}>
+                                    {
+                                        Object.keys(gist.files).map(key => {
+                                            return (
+                                                <a href={gist.files[key].raw_url} key={key}>{key}</a>
+                                            )
+                                        })
+
+                                    }
+                                    <strong>- {gist.description}</strong>
+                                </li>
+                            ))}
+                        </Gist>
+                    ) : (
+                        <h1>Nenhum gist encontrado! :(</h1>
+                    )
+                }
+
+
             </Container>
         )
     }
