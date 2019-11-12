@@ -12,6 +12,8 @@ export default class Main extends Component {
     state = {
         repositories: [],
         newRepo: '',
+        error: null,
+        errorMsg: '',
         loading: 0,
     }
 
@@ -77,7 +79,6 @@ export default class Main extends Component {
     render() {
 
         const { newRepo, repositories, loading } = this.state
-
         return (
             <Container>
                 <header>

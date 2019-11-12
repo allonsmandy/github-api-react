@@ -52,6 +52,27 @@ export const IssuesList = styled.ul`
             padding: 3px 4px;
             margin-left: 10px;
         }
+
+        span.open {
+          background: #3d9c11;
+          color: #fff;
+          border-radius: 2px;
+          font-size: 12px;
+          font-weight: 600;
+          height: 20px;
+          padding: 3px 4px;
+          margin-left: 10px;
+        }
+        span.closed {
+          background: #ff6b6b;
+          color: #fff;
+          border-radius: 2px;
+          font-size: 12px;
+          font-weight: 600;
+          height: 20px;
+          padding: 3px 4px;
+          margin-left: 10px;
+        }
     }
 
     p {
@@ -60,3 +81,63 @@ export const IssuesList = styled.ul`
         color: #999;
     }
 `
+
+// filtro
+export const Filter = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  margin-top: 30px;
+  button {
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+    padding: 10px;
+    margin: 0 10px;
+    background: #576574;
+    color: white;
+  }
+  button.open {
+    background: #3d9c11;
+    color: #fff;
+  }
+  button.closed {
+    background: #ff6b6b;
+    color: #fff;
+  }
+`
+// actions
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 20px 0;
+  span {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #999;
+  }
+  button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: #7159c1;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+    &:disabled:hover {
+      opacity: 0.5;
+    }
+  }
+`;
