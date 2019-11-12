@@ -124,7 +124,7 @@ export const Actions = styled.div`
     padding: 10px;
     border-radius: 5px;
     border: 0;
-    background: #7159c1;
+    background: #715;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
