@@ -85,5 +85,40 @@ export const List = styled.ul`
                 background: #eee;
             }
         }
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+        button {
+            color: #fff;
+            font-size: 10px;
+            width: 25px;
+            height: 25px;
+            margin-left: 10px;
+            background: #715;
+            border: 0;
+            border-radius: 50%;
+
+            &:hover {
+                background: red;
+            }
+        }
     }
+}
 `
+
+// Mensagem de erros :o
+export const ErrorMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  h1 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ff6b6b;
+  }
+`;
