@@ -1,5 +1,20 @@
 import styled from 'styled-components'
 
+// *~ Infos simples sobre repositorio :3
+export const Info_Repository = styled.ul`
+    list-style: none;
+    display: flex;
+
+    li {
+    margin: 5px;
+
+        svg {
+            margin: 0;
+            vertical-align: middle;
+        }
+    }
+`
+
 // *~ Lista de issues
 export const IssuesList = styled.ul`
     padding-top: 30px;
@@ -63,6 +78,7 @@ export const IssuesList = styled.ul`
           padding: 3px 4px;
           margin-left: 10px;
         }
+
         span.closed {
           background: #ff6b6b;
           color: #fff;
@@ -115,11 +131,13 @@ export const Actions = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 20px 0 20px 0;
+
   span {
     margin-top: 5px;
     font-size: 12px;
     color: #999;
   }
+
   button {
     padding: 10px;
     border-radius: 5px;
@@ -129,13 +147,16 @@ export const Actions = styled.div`
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+
     &:disabled {
       opacity: 0.5;
       cursor: default;
     }
+
     &:hover {
       opacity: 0.7;
     }
+
     &:disabled:hover {
       opacity: 0.5;
     }

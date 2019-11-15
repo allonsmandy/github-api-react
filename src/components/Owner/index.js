@@ -10,17 +10,20 @@ const Owner = styled.header`
         color: #715;
         text-decoration: none;
         font-size: 16px;
+        margin-left: 5px;
     }
 
     img {
         width: 120px;
         border-radius: 50%;
         margin-top: 20px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
         font-size: 24px;
         margin-top: 10px;
+        color: #8431B7;
     }
 
     p {

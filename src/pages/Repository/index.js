@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { GoStar, GoRepoForked } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import api from '../../services/api'
@@ -7,7 +8,7 @@ import Container from '../../components/Container'
 import Owner from '../../components/Owner'
 import Loading from '../../components/Loading'
 
-import { IssuesList, Filter, Actions } from './styles'
+import { IssuesList, Filter, Actions, Info_Repository } from './styles'
 
 export default class extends Component {
     static propTypes = {
@@ -104,7 +105,11 @@ export default class extends Component {
                     <Link to="/">Pagina inicial</Link>
                     <img src={repositorio.owner.avatar_url} alt={repositorio.owner.login}/>
                     <h1>Repositório: <a href={repositorio.html_url}> {repositorio.name} </a></h1>
-                    <Link to={`usuario/${encodeURIComponent(repositorio.owner.login)}`}>{repositorio.owner.login}</Link>
+                    <Link to={`/usuario/${encodeURIComponent(repositorio.owner.login)}`}>{repositorio.owner.login}</Link>
+                    <Info_Repository>
+                        <li><GoStar /> {repositorio.stargazers_count}</li>
+                        <li><GoRepoForked />{repositorio.forks_count}</li>
+                    </Info_Repository>
                     <p>{repositorio.description}</p>
                 </Owner>
 

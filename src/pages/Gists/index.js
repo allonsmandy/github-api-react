@@ -1,30 +1,72 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Container from '../../components/Container'
+import Loading from '../../components/Loading'
+import {Actions} from '../Repository/styles'
 
 import api from '../../services/api'
 
 import Gist from './styles'
 
+
 export default class Gists extends Component {
 
     state = {
         gists: [],
-        user: ''
+        user: '',
+        loading: 1,
+        page: 1
     }
 
     async componentDidMount() {
         const { match } = this.props
         const nomeUsuario = decodeURIComponent(match.params.user)
 
-        const gists = await api.get(`/users/${nomeUsuario}/gists`)
+        const gists = await api.get(`/users/${nomeUsuario}/gists`, {
+            params: {
+                per_page: 15
+            }
+        })
 
-        this.setState({ gists: gists.data, user: nomeUsuario })
+        this.setState({ gists: gists.data, user: nomeUsuario, loading: 0 })
     }
 
+    loadGists = async () => {
+        const { page, user } = this.state
+
+        const [gists] = await Promise.all([
+            api.get(`/users/${user}/gists`, {
+                params: {
+                    per_page: 15,
+                    page
+                }
+            }),
+        ])
+
+        this.setState({ gists: gists.data })
+    }
+
+    prevPage = async () => {
+        const { page } = this.state
+
+        await this.setState({ page: page === 1 ? page : page - 1})
+        this.loadGists()
+    }
+
+    nextPage = async () => {
+        const { page } = this.state
+
+        await this.setState({ page: page + 1})
+        this.loadGists()
+    }
+
+
     render() {
-        const { gists, user } = this.state
-        console.log(gists)
+        const { gists, user, page, loading } = this.state
+
+        if (loading) {
+            return <Loading>Carregando... *u*</Loading>
+        }
 
         return (
             <Container>
@@ -51,6 +93,15 @@ export default class Gists extends Component {
                     )
                 }
 
+                <Actions>
+                    <button type="button" disabled={page === 1} onClick={this.prevPage}>
+                        Anterior
+                    </button>
+                    <span>Página { page }</span>
+                    <button type="button" disabled={gists.length === 0} onClick={this.nextPage}>
+                        Próxima
+                    </button>
+                </Actions>
 
             </Container>
         )

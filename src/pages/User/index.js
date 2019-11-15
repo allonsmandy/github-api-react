@@ -62,19 +62,19 @@ export default class User extends Component {
                         </li>
                     </Info>
                     <section className="valueBox-list">
-                        <ValueBox bgColor="pink">
+                        <ValueBox bgColor="#F3AB93">
                             <span><Link to={`/usuario/${encodeURIComponent(user.login)}/seguidores`}>Seguidores: </Link></span>
                             <strong>{user.followers}</strong>
                         </ValueBox>
-                        <ValueBox bgColor="blue">
+                        <ValueBox bgColor="#B3A9C4">
                             <span><Link to={`/usuario/${encodeURIComponent(user.login)}/seguindo`}>Seguindo: </Link></span>
                             <strong>{user.following}</strong>
                         </ValueBox>
-                        <ValueBox bgColor="#ccc">
+                        <ValueBox bgColor="#8FC4C4">
                         <span><Link to={`/usuario/${encodeURIComponent(user.login)}/gists`}>Gists: </Link></span>
                             <strong>{user.public_gists}</strong>
                         </ValueBox>
-                        <ValueBox bgColor="yellow">
+                        <ValueBox bgColor="#DAC">
                             <span><Link to={`/usuario/${encodeURIComponent(user.login)}/repositorios`}>Repositorios: </Link></span>
                             <strong>{user.public_repos}</strong>
                         </ValueBox>
