@@ -17,7 +17,7 @@ const Owner = styled.header`
         width: 120px;
         border-radius: 50%;
         margin-top: 20px;
-        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
